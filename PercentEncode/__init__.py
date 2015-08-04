@@ -10,9 +10,6 @@ def forTwitter(string):
     for char in string:
         ordinal = ord(char)
         if ordinal in twitterAllowedChars: encoded += char
-        else:
-            hexcode = hex(ord(char))
-            if '0x' != hexcode[:2]: raise ValueError ('python hex() generated a weird output ='+str(hexcode))
-            encoded += '%'+hexcode[2:]
+        else: encoded += '%'+hex(ordinal)[2:] #replace 0x prefix with %
     return encoded
         
